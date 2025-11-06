@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v1.0.2] - 2025-11-06
+
+### [PR #3](https://github.com/apolopena/flask-auth-claude-workflow/pull/3) - Optimize Mark and Pedro agent prompts for speed
+**Branch:** `refactor/optimize-agent-prompts` → `main` · **Status:** ✅ Merged
+
+- [[7525781](https://github.com/apolopena/flask-auth-claude-workflow/commit/7525781)] **REFACTOR:** *agents*
+  - Optimize Mark and Pedro agent prompts in `changelog-manager.md` and `ghcli.md` for both root and final-result directories, reducing token usage by 43-62% and execution time from minutes to under 2 minutes
+
+---
+
 ## [v1.0.1] - 2025-11-06
 
 ### [PR #2](https://github.com/apolopena/flask-auth-claude-workflow/pull/2) - Remove unused execution result overhead
