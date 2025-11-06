@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Check Your Email - Flask Auth{% endblock %}
+
+{% block content %}
+<article>
+    <h1>Check Your Email</h1>
+
+    <div class="message success">
+        <strong>Almost there!</strong>
+        <p>We've sent a verification link to your email address.</p>
+        <p>Please check your inbox and click the verification link to activate your account.</p>
+        <p><strong>The link will expire in 24 hours.</strong></p>
+    </div>
+
+    <h3>Didn't receive the email?</h3>
+    <ul>
+        <li>Check your spam/junk folder</li>
+        <li>Make sure you entered the correct email address</li>
+        <li>Wait a few minutes for the email to arrive</li>
+    </ul>
+
+    <p class="text-center mt-2">
+        <a href="{{ url_for('frontend.login_page') }}" class="text-link">Back to Login</a>
+    </p>
+</article>
+{% endblock %}

@@ -1,0 +1,213 @@
+/**
+ * Custom styles for Flask Auth frontend
+ * Built on top of Pico.css for minimal, semantic styling
+ */
+
+/* Message styling for error and success alerts */
+.message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease-out;
+}
+
+.message.error {
+    background-color: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+}
+
+.message.success {
+    background-color: #efe;
+    color: #3c3;
+    border: 1px solid #cfc;
+}
+
+/* Loading state for buttons */
+button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+button:not([disabled]):hover {
+    cursor: pointer;
+}
+
+/* Form styling enhancements */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Hero section on landing page */
+.hero {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.hero h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--pico-muted-color);
+    margin-bottom: 2rem;
+}
+
+.hero .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Feature list styling */
+.features {
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.features li:before {
+    content: "✓ ";
+    color: #3c3;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* Dashboard card styling */
+.dashboard-card {
+    background: var(--pico-card-background-color);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+}
+
+.dashboard-card h2 {
+    margin-top: 0;
+}
+
+.user-info {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--pico-background-color);
+    border-radius: 0.25rem;
+    border-left: 4px solid var(--pico-primary);
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    color: var(--pico-muted-color);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--pico-muted-border-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    form {
+        padding: 0 1rem;
+    }
+}
+
+/* Navigation enhancements */
+nav {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--pico-primary);
+}
+
+/* Link styles */
+.text-link {
+    color: var(--pico-primary);
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+/* Utility classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}

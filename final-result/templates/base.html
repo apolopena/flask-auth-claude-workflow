@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flask Auth{% endblock %}</title>
+
+    <!-- Pico.css - Minimal CSS framework for semantic HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="container">
+        <ul>
+            <li><strong>Flask Auth</strong></li>
+        </ul>
+        <ul>
+            <li><a href="{{ url_for('frontend.index') }}">Home</a></li>
+            <li data-guest-only><a href="{{ url_for('frontend.register_page') }}">Register</a></li>
+            <li data-guest-only><a href="{{ url_for('frontend.login_page') }}">Login</a></li>
+            <li data-auth-only style="display: none;"><a href="{{ url_for('frontend.dashboard') }}">Dashboard</a></li>
+            <li data-auth-only style="display: none;"><a href="#" onclick="handleLogout(); return false;">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="container">
+        <p>&copy; 2025 Flask Auth System | Secure Authentication Demo</p>
+        <p><small>Built with Flask, JWT, and Pico.css</small></p>
+    </footer>
+
+    <!-- Core authentication JavaScript -->
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+
+    <!-- Logout handler -->
+    <script>
+        function handleLogout() {
+            // Clear authentication tokens
+            clearAuth();
+
+            // Show success message and redirect
+            window.location.href = '/?success=Logged out successfully';
+        }
+    </script>
+
+    <!-- Page-specific scripts -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>
