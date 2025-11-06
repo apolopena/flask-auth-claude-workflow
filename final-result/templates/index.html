@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Flask Auth{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome to Flask Auth</h1>
+    <p>A secure, production-ready authentication system built with Flask and JWT</p>
+
+    <div class="buttons">
+        <a href="{{ url_for('frontend.register_page') }}" role="button">Get Started</a>
+        <a href="{{ url_for('frontend.login_page') }}" role="button" class="secondary">Login</a>
+    </div>
+</div>
+
+<section class="features">
+    <h2>Features</h2>
+    <ul>
+        <li>Secure user registration with password hashing (scrypt algorithm)</li>
+        <li>JWT-based authentication with access and refresh tokens</li>
+        <li>Password reset flow with time-limited tokens</li>
+        <li>Email validation and security best practices</li>
+        <li>Rate limiting to prevent brute-force attacks</li>
+        <li>Responsive design that works on all devices</li>
+    </ul>
+</section>
+
+<article class="text-center mt-2">
+    <h3>Ready to try it out?</h3>
+    <p>Create an account or login to access your dashboard.</p>
+    <div class="buttons">
+        <a href="{{ url_for('frontend.register_page') }}" role="button">Register Now</a>
+    </div>
+</article>
+{% endblock %}

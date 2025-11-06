@@ -1,0 +1,34 @@
+# Python (observability hooks)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Observability
+.summary-prompt.txt
+.env*
+
+# Claude Code session data
+.claude/data/
+.filelist.txt
+
+# Observability server logs (if accidentally run from this directory)
+logs/
+
+# Note: .claude/.observability-state and .claude/.observability-config are tracked
+# because they're part of the distribution with default/example values
+
+# AI Planning System (instance files)
+.ai/planning/prp/instances/
+.ai/planning/prp/proposals/
+.ai/planning/prp/archive/
+.ai/scratch/
+
+# Application (final-result implementation)
+# Note: Most files in final-result/ are tracked to show complete workflow output.
+# Only runtime/sensitive files are gitignored:
+final-result/.env
+final-result/.env.*
+final-result/__pycache__/
+final-result/*.pyc
+final-result/*.db
+final-result/logs/

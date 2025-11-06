@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Flask Auth{% endblock %}
+
+{% block content %}
+<div class="dashboard-card">
+    <h1>Dashboard</h1>
+    <p>Welcome to your secure dashboard!</p>
+
+    <div class="user-info">
+        <h3>Your Information</h3>
+        <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+        <p><strong>User ID:</strong> <span id="user-id">Loading...</span></p>
+    </div>
+
+    <article>
+        <h3>What's Next?</h3>
+        <p>This is a protected area that requires authentication. You can:</p>
+        <ul>
+            <li>Access protected resources using your JWT token</li>
+            <li>Test the password reset flow</li>
+            <li>Explore the authentication API</li>
+        </ul>
+    </article>
+
+    <button onclick="handleLogout()" class="secondary">Logout</button>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Check authentication and load user data on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const accessToken = localStorage.getItem('access_token');
+
+        // Redirect to login if not authenticated
+        if (!accessToken) {
+            window.location.href = '/login?error=Please login to access dashboard';
+            return;
+        }
+
+        // Decode JWT to get user information
+        try {
+            const payload = decodeJWT(accessToken);
+
+            if (payload) {
+                // Display user information
+                document.getElementById('user-id').textContent = payload.sub || 'N/A';
+
+                // Get user email from payload or make API call
+                // JWT typically contains user ID in 'sub' field
+                // For email, we can make an API call or store it during login
+                const userEmail = localStorage.getItem('user_email') || 'Not available';
+                document.getElementById('user-email').textContent = userEmail;
+
+                // Alternative: Make API call to get full user info
+                // This would require a protected endpoint like /auth/me
+            } else {
+                // Invalid token
+                clearAuth();
+                window.location.href = '/login?error=Invalid session';
+            }
+        } catch (error) {
+            console.error('Failed to load user data:', error);
+            document.getElementById('user-email').textContent = 'Error loading data';
+            document.getElementById('user-id').textContent = 'Error loading data';
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,6 @@
+{
+  "PROJECT_NAME": "test-project3",
+  "MULTI_AGENT_WORKFLOW_PATH": "/home/quadro/repos/work/multi-agent-workflow/scripts/..",
+  "SERVER_URL": "http://localhost:4000",
+  "CLIENT_URL": "http://localhost:5173"
+}

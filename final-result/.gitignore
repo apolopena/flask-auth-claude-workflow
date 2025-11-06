@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Environment files
+.env
+.env.*
+
+# Flask
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Observability (environment-specific)
+.claude/.observability-state
+.claude/.observability-config
+.claude/data/
+.summary-prompt.txt
+
+# AI Planning System (instance files - gitignored in active projects)
+.ai/planning/prp/instances/
+.ai/planning/prp/proposals/
+.ai/planning/prp/archive/
+.ai/scratch/
+
+# Note: .ai/scratch/ is normally gitignored, but tracked in this
+# starter template to show example workflow output. When you copy
+# this folder to start your own project, the .gitignore will work
+# as expected and keep your scratch files private.
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

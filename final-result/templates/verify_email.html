@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Verify Email - Flask Auth{% endblock %}
+
+{% block content %}
+<article>
+    <h1>Verify Your Email</h1>
+
+    <div id="token-error" style="display: none;" class="message error">
+        <strong>Invalid or Missing Token</strong>
+        <p>The verification link is invalid or has expired.</p>
+        <p><a href="{{ url_for('frontend.register_page') }}" class="text-link">Register again</a></p>
+    </div>
+
+    <div id="loading-message">
+        <p>Verifying your email address...</p>
+        <progress></progress>
+    </div>
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+
+        const tokenError = document.getElementById('token-error');
+        const loadingMessage = document.getElementById('loading-message');
+
+        // Check if token exists
+        if (!token || token.trim() === '') {
+            loadingMessage.style.display = 'none';
+            tokenError.style.display = 'block';
+            return;
+        }
+
+        // Verify email via API
+        try {
+            const response = await apiCall('/auth/verify-email', {
+                method: 'POST',
+                body: JSON.stringify({ token: token })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Success! Redirect to login with success message
+                window.location.href = '/login?success=' + encodeURIComponent(data.message);
+            } else {
+                // Show error
+                loadingMessage.style.display = 'none';
+                tokenError.style.display = 'block';
+            }
+        } catch (error) {
+            loadingMessage.style.display = 'none';
+            showMessage('Network error. Please try again.', 'error');
+            console.error('Email verification error:', error);
+        }
+    });
+</script>
+{% endblock %}
